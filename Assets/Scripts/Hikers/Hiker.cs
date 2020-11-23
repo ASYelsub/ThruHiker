@@ -7,13 +7,12 @@ public abstract class Hiker
     private SpaceSlot currentSlot;
     private float currentSpeed; //complexified with Camper class
 
-    public Hiker(string codeName, SpaceSlot currentSlot, float currentSpeed)
+    public Hiker(string codeName, float currentSpeed)
     {
         this.codeName = codeName;
 
         //firstName and lastName are dependent on codeName;
         //maybe we'll have an enum of character names or something?
-        this.currentSlot = currentSlot;
         this.currentSpeed = currentSpeed;
     }
 

@@ -1,6 +1,16 @@
 ﻿using System;
 public class Camper : Hiker
 {
+    public enum CamperCodeNames
+    {
+        Beth, //Beth Sharks?
+        Dede, //Desiree Dreary
+        Nina, //Nina Locklear
+        Joan, //Joan ?
+        Marhsa //Marsha ?
+    }
+
+
     private int age;
     private int height;
     private int weight;
@@ -20,12 +30,11 @@ public class Camper : Hiker
     private int socialStanding; //where they are in popularity
     private int placeInLineup;
 
-    public Camper(string codeName, SpaceSlot currentSlot, float currentSpeed,
+    public Camper(string codeName, float currentSpeed,
         float endurance, float socialSensitivity, float strength, float appetite, float selfControl)
-        : base(codeName, currentSlot, currentSpeed)
+        : base(codeName, currentSpeed)
     {
         base.CodeName = codeName;
-        base.CurrentSlot = currentSlot;
         base.CurrentSpeed = CurrentSpeed;
 
 
@@ -44,37 +53,40 @@ public class Camper : Hiker
         this.appetite = appetite;
         this.selfControl = selfControl;
 
-    }
-
-    public void increaseCoreStat(string coreStat, float increaseAmount)
-    { 
-
-        switch (coreStat)
+        switch (codeName)
         {
-            case "endurance":
-                this.endurance = this.endurance + increaseAmount;
+            case "Beth":
+                base.FirstName = "Beth";
+                base.LastName = "Sharks";
                 break;
-            case "socialSensitivity":
-                this.socialSensitivity = this.socialSensitivity + increaseAmount;
+            case "Dede":
+                base.FirstName = "Desiree";
+                base.LastName = "Dreary";
                 break;
-            case "strength":
-                this.strength = this.strength + increaseAmount;
+            case "Nina":
+                base.FirstName = "Nina";
+                base.LastName = "Locklear";
                 break;
-            case "appetite":
-                this.appetite = this.appetite + increaseAmount;
+            case "Joan":
+                base.FirstName = "Joan";
+                base.LastName = "";
                 break;
-            case "selfControl":
-                this.selfControl = this.selfControl + increaseAmount;
-                break;
-            default:
-                Console.WriteLine("Default case");
+            case "Marsha":
+                base.FirstName = "Marsha";
+                base.LastName = "";
                 break;
         }
-        
     }
 
 
 
+
+    //Stats that change depending on the journey of the day
+    public float CurrentFatigue
+    {
+        get { return currentFatigue; }
+        set { currentFatigue = value; }
+    }
 
     //Getters and setters specific to campers
     //These are stats that don't change unless they
