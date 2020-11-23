@@ -14,6 +14,8 @@ public class Camper : Hiker
     private int age;
     private int height;
     private int weight;
+    private string birthdayMonth;
+    private int birthdayDayOfMonth;
 
     private float currentFatigue;
     private float currentHappiness;
@@ -24,14 +26,16 @@ public class Camper : Hiker
     private float socialSensitivity; //how much weird things on trail impact their happiness
     private float strength; //how much they can carry on their back affects their fatigue
     private float appetite; //if this is higher their hunger decreases quicker
-    private float selfControl; //how much fatigue and hunger affect their restraint
-
+    private float selfControl; //how much fatigue and hunger affect their restraint,
+                                    //also negative how much they are an ass to u :P
+    private float weirdness; //???? how weird they are??? honestly this might have 0 mechanical impact
+                                //but just mentally help me for characterization between dede and joan
 
     private int socialStanding; //where they are in popularity
     private int placeInLineup;
 
     public Camper(string codeName, float currentSpeed,
-        float endurance, float socialSensitivity, float strength, float appetite, float selfControl)
+        float endurance, float socialSensitivity, float strength, float appetite, float selfControl, float weirdness)
         : base(codeName, currentSpeed)
     {
         base.CodeName = codeName;
@@ -52,41 +56,122 @@ public class Camper : Hiker
         this.strength = strength;
         this.appetite = appetite;
         this.selfControl = selfControl;
+        this.weirdness = weirdness;
 
         switch (codeName)
         {
             case "Beth":
                 base.FirstName = "Beth";
                 base.LastName = "Sharks";
+                this.age = 11;
+                this.height = 58;
+                this.weight = 110;
+                this.birthdayMonth = "Feb";
+                this.birthdayDayOfMonth = 1;
+                this.socialStanding = 5;
                 break;
             case "Dede":
                 base.FirstName = "Desiree";
                 base.LastName = "Dreary";
+                this.age = 11;
+                this.height = 54;
+                this.weight = 88;
+                this.birthdayMonth = "Mar";
+                this.birthdayDayOfMonth = 10;
+                this.socialStanding = 4;
                 break;
             case "Nina":
                 base.FirstName = "Nina";
                 base.LastName = "Locklear";
+                this.age = 12;
+                this.height = 63;
+                this.weight = 110;
+                this.birthdayMonth = "Oct";
+                this.birthdayDayOfMonth = 4;
+                this.socialStanding = 2;
                 break;
             case "Joan":
                 base.FirstName = "Joan";
                 base.LastName = "";
+                this.age = 12;
+                this.height = 51;
+                this.weight = 80;
+                this.birthdayMonth = "Dec";
+                this.birthdayDayOfMonth = 19;
+                this.socialStanding = 3;
                 break;
             case "Marsha":
                 base.FirstName = "Marsha";
                 base.LastName = "";
+                this.age = 12;
+                this.height = 57;
+                this.weight = 98;
+                this.birthdayMonth = "May";
+                this.birthdayDayOfMonth = 25;
+                this.socialStanding = 1;
                 break;
         }
     }
 
+    //arbitrary characterization stats
+    public int Age
+    {
+        get { return age; }
+        set { age = value; }
+    }
+    public int Height
+    {
+        get { return height; }
+        set { height = value; }
+    }
+    public int Weight
+    {
+        get { return weight; }
+        set { weight = value; }
+    }
+    public string BirthdayMonth
+    {
+        get { return birthdayMonth; }
+        set { birthdayMonth = value; }
+    }
+    public int BirthdayDayOfMonth
+    {
+        get { return birthdayDayOfMonth; }
+        set { birthdayDayOfMonth = value; }
+    }
 
-
-
-    //Stats that change depending on the journey of the day
+    //Stats that change depending on the journey
     public float CurrentFatigue
     {
         get { return currentFatigue; }
         set { currentFatigue = value; }
     }
+    public float CurrentHappiness
+    {
+        get { return currentHappiness; }
+        set { currentHappiness = value; }
+    }
+    public float CurrentHunger
+    {
+        get { return currentHunger; }
+        set { currentHunger = value; }
+    }
+    public float CurrentRestraint
+    {
+        get { return currentRestraint; }
+        set { CurrentRestraint = value; }
+    }
+    public int SocialStanding
+    {
+        get { return socialStanding; }
+        set { socialStanding = value; }
+    }
+    public int PlaceInLineup
+    {
+        get { return placeInLineup; }
+        set { placeInLineup = value; }
+    }
+
 
     //Getters and setters specific to campers
     //These are stats that don't change unless they
@@ -116,6 +201,10 @@ public class Camper : Hiker
         get { return selfControl; }
         set { selfControl = value; }
     }
-
+    public float Weirdness
+    {
+        get { return weirdness; }
+        set { weirdness = value; }
+    }
 
 }
