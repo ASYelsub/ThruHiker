@@ -23,19 +23,19 @@ public class HikerGenerator
         switch (codeName)
         {
             case "Beth":
-                newCamper = new Camper("Beth", 6, 3, 8, 5, 8, 3);
+                newCamper = new Camper("Beth", 6, 3, 8, 5, 8, 3, 9);
                 break;
             case "Dede":
-                newCamper = new Camper("Dede", 5, 7, 8, 5, 5, 8);
+                newCamper = new Camper("Dede", 5, 7, 8, 5, 5, 8, 3);
                 break;
             case "Nina":
-                newCamper = new Camper("Nina", 9, 7, 6, 5, 6, 5);
+                newCamper = new Camper("Nina", 9, 7, 6, 5, 6, 5, 5);
                 break;
             case "Joan":
-                newCamper = new Camper("Joan", 3, 5, 8, 3, 3, 5);
+                newCamper = new Camper("Joan", 3, 5, 8, 3, 3, 5, 7);
                 break;
             case "Marsha": //"Ugh, of COURSE I was made last"
-                newCamper = new Camper("Marsha", 6, 8, 4, 8, 6, 4);
+                newCamper = new Camper("Marsha", 6, 8, 4, 8, 6, 4, 2);
                 break;
             default:
                 Debug.Log("No camper generated.");
@@ -51,7 +51,7 @@ public class HikerGenerator
     {
         for (int i = 0; i < amount; i++)
         {
-            Camper newCamper = new Camper("Name",10,10,10,10,10,10);
+            Camper newCamper = new Camper("Name",10,10,10,10,10,10,10);
             campers.Add(newCamper);
             allHikers.Add(newCamper);
             Debug.Log("Camper " + newCamper.CodeName + " added to campers at spot " + campers.Count);

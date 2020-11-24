@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 public class Camper : Hiker
 {
     public enum CamperCodeNames
@@ -11,17 +12,20 @@ public class Camper : Hiker
     }
 
 
+    [Header("Archetypes")] //a brief visual
     private int age;
     private int height;
     private int weight;
     private string birthdayMonth;
     private int birthdayDayOfMonth;
 
+    [Header("Flexible Stats")]
     private float currentFatigue;
     private float currentHappiness;
     private float currentHunger;
     private float currentRestraint;
 
+    [Header("Solid Stats")]
     private float endurance; //how much they can walk without stopping affects their fatigue
     private float socialSensitivity; //how much weird things on trail impact their happiness
     private float strength; //how much they can carry on their back affects their fatigue
@@ -31,8 +35,18 @@ public class Camper : Hiker
     private float weirdness; //???? how weird they are??? honestly this might have 0 mechanical impact
                                 //but just mentally help me for characterization between dede and joan
 
+    [Header("Daily Inputs")]
     private int socialStanding; //where they are in popularity
     private int placeInLineup;
+
+
+    [Header("Written Descriptions")]
+    private string[] initialBehaviors;
+    private string[] accumulatedBehaviors;
+    private string[] initialRelationships;
+    private string[] accumulatedRelationships;
+    private string[] initialExpectations;
+    private string[] accumulatedExpectations;
 
     public Camper(string codeName, float currentSpeed,
         float endurance, float socialSensitivity, float strength, float appetite, float selfControl, float weirdness)
