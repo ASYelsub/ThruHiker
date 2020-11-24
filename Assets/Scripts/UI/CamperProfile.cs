@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 //this is the page you pull up that looks like a form that gives you all the information about the kids
 //during the journey
 //usually this only shows their more "permanant" stats,
@@ -10,14 +11,21 @@ public class CamperProfile : MonoBehaviour
     //helpful website for formatting:
     // https://blog.terresquall.com/2020/07/organising-your-unity-inspector-fields-with-a-dropdown-filter/
 
+    [Header("Classes")]
+    public GameManager gameManager;
+    private List<Camper> campers;
+
+    [Header("Parent Object")]
+    [SerializeField] private GameObject camperProfileHolder;
+    private bool camperProfileVisible;
 
     [Header("Archetypes")]
+    [SerializeField] private Text nameDisplay;
     [SerializeField] private Text ageDisplay;
+    [SerializeField] private Text birthdayDisplay;
     [SerializeField] private Text heightDisplay;
     [SerializeField] private Text weightDisplay;
-    [SerializeField] private Text birthdayDisplay;
-
-
+    
     [Header("Solid Stats")]
     [SerializeField] private Text enduranceDisplay;
     [SerializeField] private Text socialSensitivityDisplay;
@@ -34,8 +42,19 @@ public class CamperProfile : MonoBehaviour
     [SerializeField] private Text initialExpectations;
     [SerializeField] private Text accumulatedExpectations;
 
-    public CamperProfile(string[] inintialBehavior, string[] initialRelationships, string[] initialExpectations)
+    [Header("Visuals")]
+    [SerializeField] private Image camperPic;
+
+    
+    public void Start()
     {
+        this.camperProfileVisible = false;
+        camperProfileHolder.SetActive(false);
+        for(int i = 0; i < gameManager.hikerGenerator.Campers.Count; i++)
+        {
+            this.campers.Add(gameManager.hikerGenerator.Campers[i]);
+        }
+        ChangeToCamper(1);
     }
 
     public void SetSolidStats(int endurance, int socialSensitivity, int strength,
@@ -47,5 +66,33 @@ public class CamperProfile : MonoBehaviour
         this.appetiteDisplay.text = appetite.ToString();
         this.selfControlDisplay.text = selfControl.ToString();
         this.weirdnessDisplay.text = weirdness.ToString();
+    }
+
+    public void ToggleProfileDisplay()
+    {
+        //Debug.Log("THIS FUNCTION WAS CALLED");
+        if (camperProfileVisible)
+            camperProfileHolder.SetActive(false);
+        else
+            camperProfileHolder.SetActive(true);
+
+        this.camperProfileVisible = !camperProfileVisible;
+
+    }
+
+    public void ChangeToCamper(int camperID)
+    {
+        this.nameDisplay.text = this.campers[camperID].FirstName + " " + this.campers[camperID].LastName;
+        this.ageDisplay.text = this.campers[camperID].Age.ToString();
+        this.birthdayDisplay.text = this.campers[camperID].BirthdayMonth + "/" + this.campers[camperID].BirthdayDayOfMonth.ToString();
+        this.heightDisplay.text = this.campers[camperID].Height.ToString();
+        this.weightDisplay.text = this.campers[camperID].Weight.ToString();
+
+        this.enduranceDisplay.text = this.campers[camperID].Endurance.ToString();
+        this.socialSensitivityDisplay.text = this.campers[camperID].SocialSensitivity.ToString();
+        this.strengthDisplay.text = this.campers[camperID].SocialSensitivity.ToString();
+        this.appetiteDisplay.text = this.campers[camperID].SocialSensitivity.ToString();
+        this.selfControlDisplay.text = this.campers[camperID].SocialSensitivity.ToString();
+        this.weirdnessDisplay.text = this.campers[camperID].SocialSensitivity.ToString();
     }
 }

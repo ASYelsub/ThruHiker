@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class HikerGenerator
 {
     private List<Hiker> allHikers;
@@ -69,5 +70,12 @@ public class HikerGenerator
             Debug.Log("Camper " + newThruHiker.CodeName + " added to otherHikers at spot " + otherHikers.Count);
             Debug.Log("Camper " + newThruHiker.CodeName + " added to allHikers at spot " + allHikers.Count);
         }
+    }
+
+
+    public List<Camper> Campers
+    {
+        get { return campers; }
+        set { campers = value; }
     }
 }

@@ -10,12 +10,24 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private SlotGenerator slotGenerator;
-    private HikerGenerator hikerGenerator;
+    public HikerGenerator hikerGenerator;
+
+    [Header("Classes")]
+    [SerializeField]
+    private CamperProfile camperProfile;
+
 
     void Start()
     {
         //Test();
         SetGame();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)){
+            camperProfile.ToggleProfileDisplay();
+        }
     }
 
     void Test()

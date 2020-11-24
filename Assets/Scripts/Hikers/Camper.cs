@@ -11,7 +11,6 @@ public class Camper : Hiker
         Marhsa //Marsha ?
     }
 
-
     [Header("Archetypes")] //a brief visual
     private int age;
     private int height;
