@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
+
 public abstract class Hiker
 {
     private string firstName;
@@ -7,6 +10,8 @@ public abstract class Hiker
     private SpaceSlot currentSlot;
     private float currentSpeed; //complexified with Camper class
 
+    private GameObject hikerPrefab;
+
     public Hiker(string codeName, float currentSpeed)
     {
         this.codeName = codeName;
@@ -14,6 +19,7 @@ public abstract class Hiker
         //firstName and lastName are dependent on codeName;
         //maybe we'll have an enum of character names or something?
         this.currentSpeed = currentSpeed;
+
     }
 
 

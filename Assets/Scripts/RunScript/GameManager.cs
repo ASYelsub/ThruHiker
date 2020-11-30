@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private CamperProfile camperProfile;
 
-
     void Start()
     {
         //Test();
@@ -47,6 +46,7 @@ public class GameManager : MonoBehaviour
         hikerGenerator.GenerateCampersInitial("Nina");
         hikerGenerator.GenerateCampersInitial("Joan");
         hikerGenerator.GenerateCampersInitial("Marsha");
+        camperProfile.Activate();
     }
 
 }

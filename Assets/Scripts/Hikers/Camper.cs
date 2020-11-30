@@ -40,11 +40,11 @@ public class Camper : Hiker
 
 
     [Header("Written Descriptions")]
-    private string[] initialBehaviors;
+    private string initialBehaviors;
     private string[] accumulatedBehaviors;
-    private string[] initialRelationships;
+    private string initialRelationships;
     private string[] accumulatedRelationships;
-    private string[] initialExpectations;
+    private string initialExpectations;
     private string[] accumulatedExpectations;
 
     public Camper(string codeName, float currentSpeed,
@@ -82,6 +82,9 @@ public class Camper : Hiker
                 this.birthdayMonth = "Feb";
                 this.birthdayDayOfMonth = 1;
                 this.socialStanding = 5;
+                this.initialBehaviors = "Beth something behavior";
+                this.initialRelationships = "Vibes with someone";
+                this.initialExpectations = "BRUH";
                 break;
             case "Dede":
                 base.FirstName = "Desiree";
@@ -92,6 +95,9 @@ public class Camper : Hiker
                 this.birthdayMonth = "Mar";
                 this.birthdayDayOfMonth = 10;
                 this.socialStanding = 4;
+                this.initialBehaviors = "Beth something behavior";
+                this.initialRelationships = "Vibes with someone";
+                this.initialExpectations = "BRUH";
                 break;
             case "Nina":
                 base.FirstName = "Nina";
@@ -102,6 +108,9 @@ public class Camper : Hiker
                 this.birthdayMonth = "Oct";
                 this.birthdayDayOfMonth = 4;
                 this.socialStanding = 2;
+                this.initialBehaviors = "Beth something behavior";
+                this.initialRelationships = "Vibes with someone";
+                this.initialExpectations = "BRUH";
                 break;
             case "Joan":
                 base.FirstName = "Joan";
@@ -112,6 +121,9 @@ public class Camper : Hiker
                 this.birthdayMonth = "Dec";
                 this.birthdayDayOfMonth = 19;
                 this.socialStanding = 3;
+                this.initialBehaviors = "Beth something behavior";
+                this.initialRelationships = "Vibes with someone";
+                this.initialExpectations = "BRUH";
                 break;
             case "Marsha":
                 base.FirstName = "Marsha";
@@ -122,6 +134,9 @@ public class Camper : Hiker
                 this.birthdayMonth = "May";
                 this.birthdayDayOfMonth = 25;
                 this.socialStanding = 1;
+                this.initialBehaviors = "Beth something behavior";
+                this.initialRelationships = "Vibes with someone";
+                this.initialExpectations = "BRUH";
                 break;
         }
     }
@@ -152,6 +167,25 @@ public class Camper : Hiker
         get { return birthdayDayOfMonth; }
         set { birthdayDayOfMonth = value; }
     }
+
+
+    //Text in camper profile
+    public string InitialBehaviors
+    {
+        get { return initialBehaviors; }
+        set { initialBehaviors = value; }
+    }
+    public string InitialRelationships
+    {
+        get { return initialRelationships; }
+        set { initialRelationships = value; }
+    }
+    public string InitialExpectations
+    {
+        get { return initialExpectations; }
+        set { initialExpectations = value; }
+    }
+
 
     //Stats that change depending on the journey
     public float CurrentFatigue
@@ -220,4 +254,6 @@ public class Camper : Hiker
         set { weirdness = value; }
     }
 
+
+    
 }

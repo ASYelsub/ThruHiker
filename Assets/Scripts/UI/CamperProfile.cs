@@ -45,16 +45,24 @@ public class CamperProfile : MonoBehaviour
     [Header("Visuals")]
     [SerializeField] private Image camperPic;
 
-    
-    public void Start()
+    [Header("TempCamperPics")]
+    [SerializeField] private Sprite bethPic;
+    [SerializeField] private Sprite dedePic;
+    [SerializeField] private Sprite ninaPic;
+    [SerializeField] private Sprite joanPic;
+    [SerializeField] private Sprite marshaPic;
+
+
+    public void Activate()
     {
+        campers = new List<Camper>();
         this.camperProfileVisible = false;
         camperProfileHolder.SetActive(false);
-        for(int i = 0; i < gameManager.hikerGenerator.Campers.Count; i++)
+        for (int i = 0; i < gameManager.hikerGenerator.Campers.Count; i++)
         {
             this.campers.Add(gameManager.hikerGenerator.Campers[i]);
         }
-        ChangeToCamper(1);
+        ChangeToCamper(0);
     }
 
     public void SetSolidStats(int endurance, int socialSensitivity, int strength,
@@ -90,9 +98,32 @@ public class CamperProfile : MonoBehaviour
 
         this.enduranceDisplay.text = this.campers[camperID].Endurance.ToString();
         this.socialSensitivityDisplay.text = this.campers[camperID].SocialSensitivity.ToString();
-        this.strengthDisplay.text = this.campers[camperID].SocialSensitivity.ToString();
-        this.appetiteDisplay.text = this.campers[camperID].SocialSensitivity.ToString();
-        this.selfControlDisplay.text = this.campers[camperID].SocialSensitivity.ToString();
-        this.weirdnessDisplay.text = this.campers[camperID].SocialSensitivity.ToString();
+        this.strengthDisplay.text = this.campers[camperID].Strength.ToString();
+        this.appetiteDisplay.text = this.campers[camperID].Appetite.ToString();
+        this.selfControlDisplay.text = this.campers[camperID].SelfControl.ToString();
+        this.weirdnessDisplay.text = this.campers[camperID].Weirdness.ToString();
+
+        this.initialBehaviors.text = this.campers[camperID].InitialBehaviors;
+        this.initialRelationships.text = this.campers[camperID].InitialRelationships;
+        this.initialExpectations.text = this.campers[camperID].InitialExpectations;
+
+        switch (camperID)
+        {
+            case 0:
+                this.camperPic.sprite = this.bethPic;
+                break;
+            case 1:
+                this.camperPic.sprite = this.dedePic;
+                break;
+            case 2:
+                this.camperPic.sprite = this.ninaPic;
+                break;
+            case 3:
+                this.camperPic.sprite = this.joanPic;
+                break;
+            case 4:
+                this.camperPic.sprite = this.marshaPic;
+                break;
+        }
     }
 }
