@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 public class Camper : Hiker
 {
@@ -47,9 +48,9 @@ public class Camper : Hiker
     private string initialExpectations;
     private string[] accumulatedExpectations;
 
-    public Camper(string codeName, float currentSpeed,
+    public Camper(string codeName, float currentSpeed, SpaceSlot currentSlot, GameObject hikerPrefab,
         float endurance, float socialSensitivity, float strength, float appetite, float selfControl, float weirdness)
-        : base(codeName, currentSpeed)
+        : base(codeName, currentSpeed, currentSlot, hikerPrefab) //may change the implementation of currentSlot to depend on camperOrder
     {
         base.CodeName = codeName;
         base.CurrentSpeed = CurrentSpeed;

@@ -18,25 +18,25 @@ public class HikerGenerator
     }
 
 
-    public void GenerateCampersInitial(string codeName)
+    public void GenerateCampersInitial(string codeName, SpaceSlot currentSlot, GameObject hikerPrefab)
     {
         Camper newCamper = null;
         switch (codeName)
         {
             case "Beth":
-                newCamper = new Camper("Beth", 6, 3, 8, 5, 8, 3, 9);
+                newCamper = new Camper("Beth", 6, currentSlot, hikerPrefab, 3, 8, 5, 8, 3, 9);
                 break;
             case "Dede":
-                newCamper = new Camper("Dede", 5, 7, 8, 5, 5, 8, 3);
+                newCamper = new Camper("Dede", 5, currentSlot, hikerPrefab, 7, 8, 5, 5, 8, 3);
                 break;
             case "Nina":
-                newCamper = new Camper("Nina", 9, 7, 6, 5, 6, 5, 5);
+                newCamper = new Camper("Nina", 9, currentSlot, hikerPrefab, 7, 6, 5, 6, 5, 5);
                 break;
             case "Joan":
-                newCamper = new Camper("Joan", 3, 5, 8, 3, 3, 5, 7);
+                newCamper = new Camper("Joan", 3, currentSlot, hikerPrefab, 5, 8, 3, 3, 5, 7);
                 break;
             case "Marsha": //"Ugh, of COURSE I was made last"
-                newCamper = new Camper("Marsha", 6, 8, 4, 8, 6, 4, 2);
+                newCamper = new Camper("Marsha", 6, currentSlot, hikerPrefab, 8, 4, 8, 6, 4, 2);
                 break;
             default:
                 Debug.Log("No camper generated.");
@@ -48,11 +48,11 @@ public class HikerGenerator
         Debug.Log("Camper " + newCamper.CodeName + " added to allHikers at spot " + allHikers.Count);
     }
 
-    public void GenerateCamperTest(int amount)
+    public void GenerateCamperTest(int amount, SpaceSlot currentSlot, GameObject hikerPrefab)
     {
         for (int i = 0; i < amount; i++)
         {
-            Camper newCamper = new Camper("Name",10,10,10,10,10,10,10);
+            Camper newCamper = new Camper("Name",10,currentSlot, hikerPrefab,10,10,10,10,10,10);
             campers.Add(newCamper);
             allHikers.Add(newCamper);
             Debug.Log("Camper " + newCamper.CodeName + " added to campers at spot " + campers.Count);
@@ -60,11 +60,12 @@ public class HikerGenerator
         }
     }
 
-    public void GenerateThruHiker(int amount)
-    {
+    public void GenerateThruHiker(int amount, SpaceSlot currentSlot, GameObject hikerPrefab)
+    {  
+
         for (int i = 0; i < amount; i++)
         {
-            ThruHiker newThruHiker = new ThruHiker("Name",10);
+            ThruHiker newThruHiker = new ThruHiker("Name",10, currentSlot, hikerPrefab);
             otherHikers.Add(newThruHiker);
             allHikers.Add(newThruHiker);
             Debug.Log("Camper " + newThruHiker.CodeName + " added to otherHikers at spot " + otherHikers.Count);

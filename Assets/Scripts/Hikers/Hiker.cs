@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Hiker
+public abstract class Hiker : MonoBehaviour
 {
     private string firstName;
     private string lastName;
@@ -10,16 +10,16 @@ public abstract class Hiker
     private SpaceSlot currentSlot;
     private float currentSpeed; //complexified with Camper class
 
-    private GameObject hikerPrefab;
-
-    public Hiker(string codeName, float currentSpeed)
+    public Hiker(string codeName, float currentSpeed, SpaceSlot currentSlot, GameObject hikerPrefab)
     {
         this.codeName = codeName;
 
         //firstName and lastName are dependent on codeName;
         //maybe we'll have an enum of character names or something?
         this.currentSpeed = currentSpeed;
-
+        this.currentSlot = currentSlot;
+        //For some fucking reason currentSlot refuses to be a thing that's passed through the constructor or whatever.
+        Instantiate(hikerPrefab,currentSlot.transform.position, Quaternion.identity);
     }
 
 

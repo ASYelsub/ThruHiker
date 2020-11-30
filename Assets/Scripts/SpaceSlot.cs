@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public class SpaceSlot
+public class SpaceSlot : MonoBehaviour
 {
-
-    
 
     public enum SlotTypes
     {
@@ -26,7 +24,6 @@ public class SpaceSlot
 
     //unsure what to do with this other than like it'll interact
     //w the visual part of Unity?
-    [SerializeField] private GameObject slotPrefab; 
 
     private SlotTypes slotType;
     private Hiker hikerInFirstPoint;
@@ -40,13 +37,15 @@ public class SpaceSlot
     private Vector3 v1;
     private Vector3 v2;
 
-    public SpaceSlot(SlotTypes slotType, Vector3 firstPointInSpace, Vector3 secondPointInSpace)
+    public SpaceSlot(SlotTypes slotType, Vector3 firstPointInSpace, Vector3 secondPointInSpace, GameObject slotPrefab, GameObject trailHolder)
     {
         this.slotType = slotType;
         this.firstPointInSpace = firstPointInSpace;
         this.secondPointInSpace = secondPointInSpace;
         this.firstPointFilled = false;
         this.secondPointFilled = false;
+        Instantiate(slotPrefab, firstPointInSpace, Quaternion.identity, trailHolder.transform);
+
     }
 
     public void PutHikerInFirstPoint(Hiker hiker)
@@ -76,8 +75,6 @@ public class SpaceSlot
         }
 
     }
-
-
 
 
     //Getters and Setters
