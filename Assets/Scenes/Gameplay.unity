@@ -762,7 +762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotPrefab: {fileID: 4976684663641117229, guid: 504d600532e4f498b8f21a5df73a1c32, type: 3}
-  hikerPrefab: {fileID: 2521286456610463480, guid: 249a920fe917c4a90b3c020bacba3b56, type: 3}
+  hikerPrefab: {fileID: 659550995387534772, guid: 249a920fe917c4a90b3c020bacba3b56, type: 3}
   camperProfile: {fileID: 1437965847}
   trailHolder: {fileID: 1414458597}
   tempSlot: {fileID: 0}

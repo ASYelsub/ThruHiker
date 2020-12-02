@@ -10,6 +10,8 @@ public abstract class Hiker : MonoBehaviour
     private SpaceSlot currentSlot;
     private float currentSpeed; //complexified with Camper class
 
+   
+
     public Hiker(string codeName, float currentSpeed)
     {
         this.codeName = codeName;
@@ -20,12 +22,6 @@ public abstract class Hiker : MonoBehaviour
         //For some fucking reason currentSlot refuses to be a thing that's passed through the constructor or whatever.
         
     }
-
-    public void CreatePhysicalHiker(SlotGenerator slotGen, GameObject hikerPrefab)
-    {
-        Instantiate(hikerPrefab, slotGen.slotStorage[0].FirstPointInSpace, Quaternion.identity);
-    }
-
 
     //Getters and Setters
     public string FirstName

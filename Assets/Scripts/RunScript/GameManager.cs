@@ -56,9 +56,6 @@ public class GameManager : MonoBehaviour
     {
         slotGenerator.GenerateRandomSlots(10, slotPrefab, trailHolder);
         //programming this as if the "camperOrder" is in according to the default order I've programmed so far
-
-        //	slotGenerator	The identifier `slotGenerator` is not in the scope	// wtf does this mean???
-        //hikerGenerator.GenerateCamperTest(1, tempSlot, hikerPrefab);
         hikerGenerator.GenerateCampersInitial("Beth");
         hikerGenerator.GenerateCampersInitial("Dede");
         hikerGenerator.GenerateCampersInitial("Nina");
@@ -66,7 +63,7 @@ public class GameManager : MonoBehaviour
         hikerGenerator.GenerateCampersInitial("Marsha");
         camperProfile.Activate();
 
-        hikerGenerator.Campers[0].CreatePhysicalHiker(slotGenerator, hikerPrefab);
+        hikerGenerator.Campers[0].CreatePhysicalCamper(slotGenerator, hikerPrefab);
     }
 
 }
