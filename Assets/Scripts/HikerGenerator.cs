@@ -89,7 +89,7 @@ public class HikerGenerator
 
     public void CreatePhysicalCamper(SlotGenerator slotGen, GameObject hikerPrefab, int whichSlot)
     {
-        GameObject newCamper = GameObject.Instantiate(hikerPrefab, slotGen.slotStorage[whichSlot].FirstPointInSpace,Quaternion.identity);
+        GameObject newCamper = GameObject.Instantiate(hikerPrefab, slotGen.slotStorage[whichSlot].FirstPointInSpace + new Vector3(0,1,0),Quaternion.identity);
 
         campersPhysical.Add(newCamper);
         allHikersPhysical.Add(newCamper);

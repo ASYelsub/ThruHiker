@@ -7,11 +7,15 @@ using TMPro;
 //ideally like it also assigns the either thruhiker or camper instantiated classes
 //to this game object.
 //This also interacts with slots I guess!
-public class HikerDetails : MonoBehaviour
+public class CamperDetails : MonoBehaviour
 {
     public GameManager gameManager;
     private Camper thisHiker;
     private Camera camera;
+
+
+    private bool camperIsSelected;
+    private bool mouseOverCamper;
 
     [Header("Displays")]
     [SerializeField] private GameObject displayHolder;
@@ -32,11 +36,22 @@ public class HikerDetails : MonoBehaviour
         this.happinessDisplay.text = "";
         this.hungerDisplay.text = "";
         this.restraintDisplay.text = "";
+        this.camperIsSelected = false;
+        this.mouseOverCamper = false;
     }
 
     private void Update()
     {
         displayHolder.transform.forward = camera.transform.forward;
+
+        if (Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(0))
+        {
+            if (!mouseOverCamper)
+            {
+                camperIsSelected = false;
+            }
+
+        }
     }
     private void OnMouseEnter()
     {
@@ -47,15 +62,27 @@ public class HikerDetails : MonoBehaviour
         this.hungerDisplay.text = "Hunger " + thisHiker.CurrentHunger.ToString();
         this.restraintDisplay.text = "Restraint " + thisHiker.CurrentRestraint.ToString();
         //this.placeInOrderDisplay.text = thisHiker.CurrentFatigue.ToString();
-
+        mouseOverCamper = true;
     }
 
     private void OnMouseExit()
     {
-        this.nameDisplay.text = "";
-        this.fatigueDisplay.text = "";
-        this.happinessDisplay.text = "";
-        this.hungerDisplay.text = "";
-        this.restraintDisplay.text = "";
+        if (!camperIsSelected)
+        {
+            this.nameDisplay.text = "";
+            this.fatigueDisplay.text = "";
+            this.happinessDisplay.text = "";
+            this.hungerDisplay.text = "";
+            this.restraintDisplay.text = "";
+        }
+        mouseOverCamper = false;
+    }
+     
+
+    //this is the "select camper" function
+    private void OnMouseDown()
+    {
+        camperIsSelected = true;
+        
     }
 }
