@@ -48,13 +48,12 @@ public class Camper : Hiker
     private string initialExpectations;
     private string[] accumulatedExpectations;
 
-    public Camper(string codeName, float currentSpeed, SpaceSlot currentSlot, GameObject hikerPrefab,
+    public Camper(string codeName, float currentSpeed,
         float endurance, float socialSensitivity, float strength, float appetite, float selfControl, float weirdness)
-        : base(codeName, currentSpeed, currentSlot, hikerPrefab) //may change the implementation of currentSlot to depend on camperOrder
+        : base(codeName, currentSpeed) //may change the implementation of currentSlot to depend on camperOrder
     {
         base.CodeName = codeName;
         base.CurrentSpeed = CurrentSpeed;
-
 
         //100 is max, 0 is min. Closer to 0 the worse.
         //All campers when first created may not be at 100 to start,

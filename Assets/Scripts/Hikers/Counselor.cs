@@ -4,8 +4,8 @@ using UnityEngine;
 public class Counselor : Hiker
 {
 
-    public Counselor(string codeName, float currentSpeed, SpaceSlot currentSlot, GameObject hikerPrefab)
-         : base(codeName, currentSpeed, currentSlot, hikerPrefab)
+    public Counselor(string codeName, float currentSpeed)
+         : base(codeName, currentSpeed)
     {
 
     }

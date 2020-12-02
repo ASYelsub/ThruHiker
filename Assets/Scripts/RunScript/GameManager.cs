@@ -26,9 +26,13 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject trailHolder;
 
+    public SpaceSlot tempSlot;
+
     void Start()
     {
         //Test();
+        slotGenerator = new SlotGenerator();
+        hikerGenerator = new HikerGenerator();
         SetGame();
     }
 
@@ -50,18 +54,19 @@ public class GameManager : MonoBehaviour
 
     void SetGame()
     {
-        slotGenerator = new SlotGenerator();
         slotGenerator.GenerateRandomSlots(10, slotPrefab, trailHolder);
-        hikerGenerator = new HikerGenerator();
         //programming this as if the "camperOrder" is in according to the default order I've programmed so far
 
         //	slotGenerator	The identifier `slotGenerator` is not in the scope	// wtf does this mean???
-        hikerGenerator.GenerateCampersInitial("Beth", slotGenerator.slotStorage[0], hikerPrefab);
-        hikerGenerator.GenerateCampersInitial("Dede", slotGenerator.slotStorage[1], hikerPrefab);
-        hikerGenerator.GenerateCampersInitial("Nina", slotGenerator.slotStorage[2], hikerPrefab);
-        hikerGenerator.GenerateCampersInitial("Joan", slotGenerator.slotStorage[3], hikerPrefab);
-        hikerGenerator.GenerateCampersInitial("Marsha", slotGenerator.slotStorage[4], hikerPrefab);
+        //hikerGenerator.GenerateCamperTest(1, tempSlot, hikerPrefab);
+        hikerGenerator.GenerateCampersInitial("Beth");
+        hikerGenerator.GenerateCampersInitial("Dede");
+        hikerGenerator.GenerateCampersInitial("Nina");
+        hikerGenerator.GenerateCampersInitial("Joan");
+        hikerGenerator.GenerateCampersInitial("Marsha");
         camperProfile.Activate();
+
+        hikerGenerator.Campers[0].CreatePhysicalHiker(slotGenerator, hikerPrefab);
     }
 
 }

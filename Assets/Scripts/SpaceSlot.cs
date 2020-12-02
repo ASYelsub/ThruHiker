@@ -43,7 +43,8 @@ public class SpaceSlot : MonoBehaviour
         this.firstPointInSpace = firstPointInSpace;
         this.secondPointInSpace = secondPointInSpace;
         this.firstPointFilled = false;
-        this.secondPointFilled = false;
+
+        this.v1 = firstPointInSpace;
         Instantiate(slotPrefab, firstPointInSpace, Quaternion.identity, trailHolder.transform);
 
     }

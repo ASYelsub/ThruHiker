@@ -765,6 +765,7 @@ MonoBehaviour:
   hikerPrefab: {fileID: 2521286456610463480, guid: 249a920fe917c4a90b3c020bacba3b56, type: 3}
   camperProfile: {fileID: 1437965847}
   trailHolder: {fileID: 1414458597}
+  tempSlot: {fileID: 0}
 --- !u!1 &447039285
 GameObject:
   m_ObjectHideFlags: 0
