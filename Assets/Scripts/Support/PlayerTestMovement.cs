@@ -5,48 +5,72 @@ using UnityEngine;
 public class PlayerTestMovement : MonoBehaviour
 {
     GameObject thisObject;
-    public GameObject camera;
+    public Camera camera;
     Vector3 movementVec;
-    float h = 40.0f;
-    float v = 40.0f;
-    // Update is called once per frame
+    Vector3 notMoving;
+    float speed = .05f;
+
+    public float minX = -60f;
+    public float maxX = 60f;
+
+    public float sensitivity;
+
+    float rotY = 0f;
+    float rotX = 0f;
+    bool isOpen = false;
     private void Start()
     {
         thisObject = this.gameObject;
         movementVec = new Vector3();
+        notMoving = new Vector3(0, 0, 0);
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = true;
+
     }
     void Update()
     {
         if (Input.GetKey(KeyCode.D))
         {
-            movementVec = new Vector3(1, 0, 0);
+            movementVec = Vector3.right * speed;
         }
-        if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKey(KeyCode.A))
         {
-            movementVec = new Vector3(-1, 0, 0);
+            movementVec = Vector3.left * speed;
+        }
+        else if (Input.GetKey(KeyCode.W))
+        {
+            movementVec = Vector3.forward * speed;
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            movementVec = Vector3.back * speed;
+        }
+        else
+        {
+            movementVec = notMoving;
         }
 
-        if (Input.GetKey(KeyCode.W))
+        gameObject.transform.localPosition = gameObject.transform.localPosition + movementVec;
+        
+        if (Input.GetKeyDown(KeyCode.Escape) && isOpen == false)
         {
-            movementVec = new Vector3(0, 0, 1);
+            isOpen = true;
         }
-        if (Input.GetKey(KeyCode.S))
+        else if (Input.GetKeyDown(KeyCode.Escape) && isOpen == true)
         {
-            movementVec = new Vector3(0, 0, -1);
+            isOpen = false;
         }
-        if(!Input.GetKey(KeyCode.A) || !Input.GetKey(KeyCode.D) || !Input.GetKey(KeyCode.S) || !Input.GetKey(KeyCode.W))
+        if(isOpen == false)
         {
-            movementVec = new Vector3(0, 0, 0);
-        }
-        gameObject.transform.position = gameObject.transform.position + movementVec;
+            rotY += Input.GetAxis("Mouse X") * sensitivity;
+            rotX += Input.GetAxis("Mouse Y") * sensitivity;
 
+            rotX = Mathf.Clamp(rotX, minX, maxX);
 
-        // If Right Button is clicked Camera will move.
-        while (Input.GetMouseButtonDown(1))
-        {
-            h = h * Input.GetAxis("Mouse Y");
-            v = v * Input.GetAxis("Mouse X");
-            camera.transform.Translate(v, h, 0);
+            transform.localEulerAngles = new Vector3(0, rotY, 0);
+            gameObject.transform.localEulerAngles = new Vector3(0, rotY, 0);
+            camera.transform.localEulerAngles = new Vector3(-rotX, 0, 0);
         }
     }
 
