@@ -1789,6 +1789,7 @@ GameObject:
   - component: {fileID: 877520385}
   - component: {fileID: 877520384}
   - component: {fileID: 877520388}
+  - component: {fileID: 877520389}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1886,10 +1887,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a80dac9ad20264b8dbbae6a16bba0929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 832390954}
-  minX: -60
-  maxX: 60
-  sensitivity: 0
+  walkingSpeed: 7.5
+  runningSpeed: 11.5
+  jumpSpeed: 8
+  gravity: 0
+  playerCamera: {fileID: 832390954}
+  lookSpeed: 2
+  lookXLimit: 45
+  canMove: 1
+--- !u!143 &877520389
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877520383}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &895444251
 GameObject:
   m_ObjectHideFlags: 0
