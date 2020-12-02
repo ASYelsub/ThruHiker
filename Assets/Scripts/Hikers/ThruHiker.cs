@@ -10,5 +10,6 @@ public class ThruHiker : Hiker
     public ThruHiker(string codeName, float currentSpeed)
          : base(codeName, currentSpeed)
     {
+        HikerGenerator.otherHikerCount++;
     }
 }

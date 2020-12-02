@@ -48,13 +48,11 @@ public class Camper : Hiker
     private string initialExpectations;
     private string[] accumulatedExpectations;
 
-
-    private GameObject myGameObject;
-
     public Camper(string codeName, float currentSpeed,
         float endurance, float socialSensitivity, float strength, float appetite, float selfControl, float weirdness)
         : base(codeName, currentSpeed) //may change the implementation of currentSlot to depend on camperOrder
     {
+        HikerGenerator.camperCount++;
         base.CodeName = codeName;
         base.CurrentSpeed = CurrentSpeed;
 
@@ -142,14 +140,6 @@ public class Camper : Hiker
                 this.initialExpectations = "BRUH";
                 break;
         }
-    }
-
-    public void CreatePhysicalCamper(SlotGenerator slotGen, GameObject hikerPrefab)
-    {
-        myGameObject = new GameObject();
-        myGameObject.AddComponent<Camper>();
-        Debug.Log(gameObject.GetComponent<Camper>().FirstName);
-        //Instantiate(hikerPrefab, slotGen.slotStorage[0].FirstPointInSpace, Quaternion.identity);
     }
 
     //arbitrary characterization stats

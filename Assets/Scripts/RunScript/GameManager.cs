@@ -56,14 +56,20 @@ public class GameManager : MonoBehaviour
     {
         slotGenerator.GenerateRandomSlots(10, slotPrefab, trailHolder);
         //programming this as if the "camperOrder" is in according to the default order I've programmed so far
+        //guess it's important that they're made in the same order.
+
         hikerGenerator.GenerateCampersInitial("Beth");
+        hikerGenerator.CreatePhysicalCamper(slotGenerator, hikerPrefab, 0);
         hikerGenerator.GenerateCampersInitial("Dede");
+        hikerGenerator.CreatePhysicalCamper(slotGenerator, hikerPrefab, 1);
         hikerGenerator.GenerateCampersInitial("Nina");
+        hikerGenerator.CreatePhysicalCamper(slotGenerator, hikerPrefab, 2);
         hikerGenerator.GenerateCampersInitial("Joan");
+        hikerGenerator.CreatePhysicalCamper(slotGenerator, hikerPrefab, 3);
         hikerGenerator.GenerateCampersInitial("Marsha");
+        hikerGenerator.CreatePhysicalCamper(slotGenerator, hikerPrefab, 4);
         camperProfile.Activate();
 
-        hikerGenerator.Campers[0].CreatePhysicalCamper(slotGenerator, hikerPrefab);
     }
 
 }

@@ -10,10 +10,9 @@ public abstract class Hiker : MonoBehaviour
     private SpaceSlot currentSlot;
     private float currentSpeed; //complexified with Camper class
 
-   
-
     public Hiker(string codeName, float currentSpeed)
     {
+        HikerGenerator.allHikerCount++;
         this.codeName = codeName;
 
         //firstName and lastName are dependent on codeName;

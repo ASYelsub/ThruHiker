@@ -1,5 +1,6 @@
-﻿using System;
+﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 [System.Serializable]
@@ -8,13 +9,26 @@ public class HikerGenerator
     private List<Hiker> allHikers;
     private List<Camper> campers;
     private List<ThruHiker> otherHikers;
+    private List<GameObject> campersPhysical;
+    private List<GameObject> otherHikersPhysical;
+    private List<GameObject> allHikersPhysical;
 
+    public static int camperCount; //specifically increases when the stats are generated, not the phsyical part
+    public static int otherHikerCount;
+    public static int allHikerCount;
 
     public HikerGenerator()
     {
+        camperCount = 0;
+        otherHikerCount = 0;
+        allHikerCount = 0;
+
         allHikers = new List<Hiker>();
         campers = new List<Camper>();
         otherHikers = new List<ThruHiker>();
+        campersPhysical = new List<GameObject>();
+        otherHikersPhysical = new List<GameObject>();
+        allHikersPhysical = new List<GameObject>();
     }
 
 
@@ -73,10 +87,30 @@ public class HikerGenerator
         }
     }
 
+    public void CreatePhysicalCamper(SlotGenerator slotGen, GameObject hikerPrefab, int whichSlot)
+    {
+        GameObject newCamper = GameObject.Instantiate(hikerPrefab, slotGen.slotStorage[whichSlot].FirstPointInSpace,Quaternion.identity);
+
+        campersPhysical.Add(newCamper);
+        allHikersPhysical.Add(newCamper);
+    }
+
 
     public List<Camper> Campers
     {
         get { return campers; }
         set { campers = value; }
+    }
+
+    public List<Hiker> AllHikers
+    {
+        get { return allHikers; }
+        set { allHikers = value; }
+    }
+
+    public List<ThruHiker> OtherHikers
+    {
+        get { return otherHikers; }
+        set { otherHikers = value; }
     }
 }

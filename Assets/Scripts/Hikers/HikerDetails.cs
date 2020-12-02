@@ -18,11 +18,16 @@ public class HikerDetails : MonoBehaviour
     private void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
-        thisHiker = gameManager.hikerGenerator.Campers[0];
+        thisHiker = gameManager.hikerGenerator.Campers[HikerGenerator.camperCount - 1];
     }
 
     private void OnMouseEnter()
     {
         this.nameDisplay.text = thisHiker.FirstName;
+    }
+
+    private void OnMouseExit()
+    {
+        this.nameDisplay.text = "";
     }
 }

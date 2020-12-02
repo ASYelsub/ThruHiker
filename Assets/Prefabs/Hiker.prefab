@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2530646651694115202}
   - component: {fileID: 3633985306222036240}
   - component: {fileID: 3918030290483987194}
-  - component: {fileID: 2719955789031230147}
+  - component: {fileID: 8180861140197416698}
   m_Layer: 0
   m_Name: Hiker
   m_TagString: Untagged
@@ -98,7 +98,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2719955789031230147
+--- !u!114 &8180861140197416698
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,9 +107,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 659550995387534772}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7156ba9675347464986da6a19af0c957, type: 3}
+  m_Script: {fileID: 11500000, guid: 967c66f50d2b94548ab79583e201df82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   nameDisplay: {fileID: 3232901541490150549}
 --- !u!1 &7039177629498279290
 GameObject:
@@ -209,7 +210,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: BITCH
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
