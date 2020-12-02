@@ -21,12 +21,14 @@ public class GameManager : MonoBehaviour
     [Header("Classes")]
     [SerializeField]
     private CamperProfile camperProfile;
+    public HolderOfAssets holderOfAssets;
 
     [Header("In Scene Objects")]
     [SerializeField]
     private GameObject trailHolder;
 
     public SpaceSlot tempSlot;
+
 
     void Start()
     {
@@ -54,7 +56,7 @@ public class GameManager : MonoBehaviour
 
     void SetGame()
     {
-        slotGenerator.GenerateRandomSlots(10, slotPrefab, trailHolder);
+        slotGenerator.GenerateRandomSlots(10, slotPrefab, trailHolder,holderOfAssets);
         //programming this as if the "camperOrder" is in according to the default order I've programmed so far
         //guess it's important that they're made in the same order.
 

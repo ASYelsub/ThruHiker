@@ -728,6 +728,7 @@ GameObject:
   m_Component:
   - component: {fileID: 444696115}
   - component: {fileID: 444696116}
+  - component: {fileID: 444696117}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -764,8 +765,30 @@ MonoBehaviour:
   slotPrefab: {fileID: 4976684663641117229, guid: 504d600532e4f498b8f21a5df73a1c32, type: 3}
   hikerPrefab: {fileID: 659550995387534772, guid: 249a920fe917c4a90b3c020bacba3b56, type: 3}
   camperProfile: {fileID: 1437965847}
+  holderOfAssets: {fileID: 444696117}
   trailHolder: {fileID: 1414458597}
   tempSlot: {fileID: 0}
+--- !u!114 &444696117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444696114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c07f337aaeabbbc428c1070e639a0835, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BridgeMat: {fileID: 2100000, guid: 006c964fe8fdb431f949121331cc09a0, type: 2}
+  CairnMat: {fileID: 2100000, guid: 6983e2df841f54149a4edc9397adf1a7, type: 2}
+  ConcreteMat: {fileID: 2100000, guid: 0ecf63c5d1cd34c1c8bd8a96c8b7b711, type: 2}
+  FloodedMat: {fileID: 2100000, guid: 2fb0534d6440f4156903431697f453aa, type: 2}
+  LogMat: {fileID: 2100000, guid: 4e3c36835b7e14b5793e647c3f4a7fc6, type: 2}
+  RockyMat: {fileID: 2100000, guid: aada38f38090e48119d483e753f8c90a, type: 2}
+  SteepMat: {fileID: 2100000, guid: 6f199240e01334a989dd167fb5efb804, type: 2}
+  StreamMat: {fileID: 2100000, guid: d6c9aaebf42ce4a9fb57c29e4a347a97, type: 2}
+  WellCaredForMat: {fileID: 2100000, guid: 5428d341997834035b3cce2deb73e01c, type: 2}
 --- !u!1 &447039285
 GameObject:
   m_ObjectHideFlags: 0

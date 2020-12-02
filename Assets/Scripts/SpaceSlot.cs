@@ -37,16 +37,21 @@ public class SpaceSlot : MonoBehaviour
     private Vector3 v1;
     private Vector3 v2;
 
-    public SpaceSlot(SlotTypes slotType, Vector3 firstPointInSpace, Vector3 secondPointInSpace, GameObject slotPrefab, GameObject trailHolder)
+    private Material slotMat;
+
+    public SpaceSlot(SlotTypes slotType, Vector3 firstPointInSpace, Vector3 secondPointInSpace, GameObject slotPrefab, GameObject trailHolder, Material slotMat)
     {
         this.slotType = slotType;
         this.firstPointInSpace = firstPointInSpace;
         this.secondPointInSpace = secondPointInSpace;
         this.firstPointFilled = false;
+        this.slotMat = slotMat;
 
         this.v1 = firstPointInSpace;
-        Instantiate(slotPrefab, firstPointInSpace, Quaternion.identity, trailHolder.transform);
-
+        GameObject newSlot = Instantiate(slotPrefab, firstPointInSpace, Quaternion.identity, trailHolder.transform);
+        newSlot.GetComponent<MeshRenderer>().material = slotMat;
+        //slotGen.slotPhysical.Add(newSlot);
+        
     }
 
     public void PutHikerInFirstPoint(Hiker hiker)
