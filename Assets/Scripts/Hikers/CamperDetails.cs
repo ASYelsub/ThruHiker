@@ -13,9 +13,13 @@ public class CamperDetails : MonoBehaviour
     private Camper thisHiker;
     private Camera camera;
 
+    private int camperID;
 
     private bool camperIsSelected;
     private bool mouseOverCamper;
+
+    private Material selectedCamperMat;
+    private Material normalCamperMat;
 
     [Header("Displays")]
     [SerializeField] private GameObject displayHolder;
@@ -31,6 +35,7 @@ public class CamperDetails : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         camera = FindObjectOfType<Camera>();
         thisHiker = gameManager.hikerGenerator.Campers[HikerGenerator.camperCount - 1];
+        camperID = HikerGenerator.camperCount - 1;
         this.nameDisplay.text = "";
         this.fatigueDisplay.text = "";
         this.happinessDisplay.text = "";
@@ -38,19 +43,39 @@ public class CamperDetails : MonoBehaviour
         this.restraintDisplay.text = "";
         this.camperIsSelected = false;
         this.mouseOverCamper = false;
+        selectedCamperMat = gameManager.holderOfAssets.selectedHiker;
+        normalCamperMat = gameManager.holderOfAssets.basicHiker;
     }
 
     private void Update()
     {
-        displayHolder.transform.forward = camera.transform.forward;
-
-        if (Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             if (!mouseOverCamper)
             {
                 camperIsSelected = false;
             }
 
+        }
+        
+    }
+    private void FixedUpdate()
+    {
+        displayHolder.transform.forward = camera.transform.forward;
+
+        if (!camperIsSelected)
+        {
+            gameObject.GetComponent<MeshRenderer>().material = normalCamperMat;
+        }
+
+
+        if (!mouseOverCamper && !camperIsSelected)
+        {
+            this.nameDisplay.text = "";
+            this.fatigueDisplay.text = "";
+            this.happinessDisplay.text = "";
+            this.hungerDisplay.text = "";
+            this.restraintDisplay.text = "";
         }
     }
     private void OnMouseEnter()
@@ -83,6 +108,7 @@ public class CamperDetails : MonoBehaviour
     private void OnMouseDown()
     {
         camperIsSelected = true;
-        
+        gameObject.GetComponent<MeshRenderer>().material = selectedCamperMat;
+        gameManager.camperProfile.ChangeToCamper(camperID);
     }
 }

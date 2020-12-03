@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Classes")]
     [SerializeField]
-    private CamperProfile camperProfile;
+    public CamperProfile camperProfile;
     public HolderOfAssets holderOfAssets;
 
     [Header("In Scene Objects")]
@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)){
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Tab)){
             camperProfile.ToggleProfileDisplay();
         }
     }

@@ -14,4 +14,8 @@ public class HolderOfAssets : MonoBehaviour
     public Material SteepMat;
     public Material StreamMat;
     public Material WellCaredForMat;
+
+    [Header("Camper Materials")]
+    public Material basicHiker;
+    public Material selectedHiker;
 }
