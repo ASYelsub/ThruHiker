@@ -17,6 +17,11 @@ public class CamperOrder
 
     public CamperOrder(Camper leader, Camper secondInLine, Camper thirdInLine, Camper fourthInLine, Camper finalCamper)
     {
+        this.leader = leader;
+        this.secondInLine = secondInLine;
+        this.thirdInLine = thirdInLine;
+        this.fourthInLine = fourthInLine;
+        this.finalCamper = finalCamper;
         //Maybe this could be a queue or a stack or something? something about interacting w them in line. But idk if i want that specificity.
         campersInOrder = new List<Camper>();
         campersInOrder.Add(leader);
@@ -24,5 +29,31 @@ public class CamperOrder
         campersInOrder.Add(thirdInLine);
         campersInOrder.Add(fourthInLine);
         campersInOrder.Add(finalCamper);
+    }
+
+    public Camper Leader
+    {
+        get { return leader; }
+        set { leader = value; }
+    }
+    public Camper SecondInLine
+    {
+        get { return secondInLine; }
+        set { secondInLine = value; }
+    }
+    public Camper ThirdInLine
+    {
+        get { return thirdInLine; }
+        set { thirdInLine = value; }
+    }
+    public Camper FourthInLine
+    {
+        get { return fourthInLine; }
+        set { fourthInLine = value; }
+    }
+    public Camper FinalCamper
+    {
+        get { return finalCamper; }
+        set { finalCamper = value; }
     }
 }

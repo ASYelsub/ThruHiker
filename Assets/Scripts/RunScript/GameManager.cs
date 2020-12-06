@@ -9,8 +9,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Classes Not on Objects")]
     public SlotGenerator slotGenerator;
     public HikerGenerator hikerGenerator;
+    public SpaceSlot tempSlot;
+    private CamperOrder camperOrder; //later there will be a screen that's like "pick camper order" & a function thats like "open camper order picker menu"
+                                        //maybe it could correspond to UI stuff? //maybe on GameplayUI?
 
     [Header("Prefabs")]
     [SerializeField]
@@ -26,9 +30,6 @@ public class GameManager : MonoBehaviour
     [Header("In Scene Objects")]
     [SerializeField]
     private GameObject trailHolder;
-
-    public SpaceSlot tempSlot;
-
 
     void Start()
     {
@@ -70,6 +71,10 @@ public class GameManager : MonoBehaviour
         hikerGenerator.CreatePhysicalCamper(slotGenerator, hikerPrefab, 3);
         hikerGenerator.GenerateCampersInitial("Marsha");
         hikerGenerator.CreatePhysicalCamper(slotGenerator, hikerPrefab, 4);
+        
+        
+        camperOrder = new CamperOrder(hikerGenerator.Campers[0], hikerGenerator.Campers[1], hikerGenerator.Campers[2], hikerGenerator.Campers[3], hikerGenerator.Campers[4]);
+
         camperProfile.Activate();
 
     }

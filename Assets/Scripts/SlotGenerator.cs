@@ -12,8 +12,11 @@ public class SlotGenerator
 
     private Material slotMat;
     private HolderOfAssets assetHolder;
+
+    private int numberOfSlotsInLevel;
     public SlotGenerator()
     {
+        numberOfSlotsInLevel = 0;
         slotStorage = new List<SpaceSlot>();
         slotStorage2 = new List<SpaceSlot>(); //the right side of the path, or something.
     }
@@ -21,7 +24,10 @@ public class SlotGenerator
     public void GenerateRandomSlots(int amount, GameObject slotPrefab, GameObject trailHolder, HolderOfAssets assetHolder)
     {
         this.assetHolder = assetHolder;
+        this.numberOfSlotsInLevel = amount;
         int randomInt;
+        //PROBABLY GONNA MOVE MOST OF THIS INFO TO LEVEL
+        //...or at least have it depend on a "level" object thats passed through in the signature?
         for (int i = 0; i < amount; i++)
         {
   
@@ -77,7 +83,11 @@ public class SlotGenerator
             default:
                 return SpaceSlot.SlotTypes.Nothing;
         }
-
     }
 
+    public int NumberOfSlotsInLevel
+    {
+        get { return numberOfSlotsInLevel; }
+        set { numberOfSlotsInLevel = value; }
+    }
 }
