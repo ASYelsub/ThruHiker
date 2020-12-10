@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
 
     void SetGame()
     {
-        trailGenerator.GenerateTrail(trailGenerator.AllStretches[0], trailGenerator.AllStretches[2]);
+//        trailGenerator.GenerateTrail(trailGenerator.AllStretches[0], trailGenerator.AllStretches[2]);
         slotGenerator.GenerateRandomSlots(10, slotPrefab, trailHolder,holderOfAssets);
         //programming this as if the "camperOrder" is in according to the default order I've programmed so far
         //guess it's important that they're made in the same order.

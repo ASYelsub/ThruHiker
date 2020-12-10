@@ -921,7 +921,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76ca33e3caf564a8a81cbf89d74ef758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempSlot: {fileID: 0}
   movementManager: {fileID: 444696118}
   slotPrefab: {fileID: 4976684663641117229, guid: 504d600532e4f498b8f21a5df73a1c32, type: 3}
   hikerPrefab: {fileID: 659550995387534772, guid: 249a920fe917c4a90b3c020bacba3b56, type: 3}
