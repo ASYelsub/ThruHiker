@@ -17,5 +17,8 @@ public class HolderOfAssets : MonoBehaviour
 
     [Header("Camper Materials")]
     public Material basicHiker;
+    public Material selectedEyes;
+    public Material selectedBody;
+    public Material selectedHair;
     public Material selectedHiker;
 }
