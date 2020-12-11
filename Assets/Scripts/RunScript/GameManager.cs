@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         //Test();
-        trailGenerator = new TrailGenerator();
+        //trailGenerator = new TrailGenerator();
         slotGenerator = new SlotGenerator();
         hikerGenerator = new HikerGenerator();
         SetGame();

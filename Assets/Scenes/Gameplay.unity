@@ -949,6 +949,9 @@ MonoBehaviour:
   StreamMat: {fileID: 2100000, guid: d6c9aaebf42ce4a9fb57c29e4a347a97, type: 2}
   WellCaredForMat: {fileID: 2100000, guid: 5428d341997834035b3cce2deb73e01c, type: 2}
   basicHiker: {fileID: 2100000, guid: 7f5523722573567428bf2725ac2678a5, type: 2}
+  selectedEyes: {fileID: 0}
+  selectedBody: {fileID: 0}
+  selectedHair: {fileID: 0}
   selectedHiker: {fileID: 2100000, guid: 091d2ba0dcce5aa48b0baa72f43e6555, type: 2}
 --- !u!114 &444696118
 MonoBehaviour:
@@ -5475,7 +5478,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: bbe5c5bb814d748e8a2eeaf269b275b1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
