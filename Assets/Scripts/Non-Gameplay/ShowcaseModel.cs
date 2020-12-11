@@ -8,8 +8,8 @@ public class ShowcaseModel : MonoBehaviour
     [Header("Rotation & Bounce")]
     GameObject rotateObject;
     Vector3 rotateVector;
-    public float rotateSpeed;
-    public float bounceSpeed;
+    public float rotateSpeed = .7f;
+    public float bounceSpeed = .04f;
     float timer = 0f;
     Vector3 initialPos;
 
@@ -45,14 +45,18 @@ public class ShowcaseModel : MonoBehaviour
 
     void Update()
     {
-        timer += 1 * bounceSpeed;
-        rotateObject.transform.Rotate(rotateVector);
-        rotateObject.transform.localPosition = new Vector3(initialPos.x, initialPos.y + Mathf.Sin(timer) * bounceSpeed, initialPos.z);
-       /* if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             isHighlighted = !isHighlighted;
             ChangeMat();
-        }*/
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        timer += 1 * bounceSpeed;
+        rotateObject.transform.Rotate(rotateVector);
+        rotateObject.transform.localPosition = new Vector3(initialPos.x, initialPos.y + Mathf.Sin(timer) * bounceSpeed, initialPos.z);
     }
 
     private void OnMouseDown()

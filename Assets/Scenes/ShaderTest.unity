@@ -685,6 +685,14 @@ PrefabInstance:
       propertyPath: skullcap
       value: 
       objectReference: {fileID: 1362614182}
+    - target: {fileID: 2117822764018971419, guid: 82c83603bb19343a291e7437391ffa77, type: 3}
+      propertyPath: rotateSpeed
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2117822764018971419, guid: 82c83603bb19343a291e7437391ffa77, type: 3}
+      propertyPath: bounceSpeed
+      value: 0.04
+      objectReference: {fileID: 0}
     - target: {fileID: 2117822764018971420, guid: 82c83603bb19343a291e7437391ffa77, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.00008247238
