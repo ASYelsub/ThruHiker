@@ -48,11 +48,11 @@ public class ShowcaseModel : MonoBehaviour
         timer += 1 * bounceSpeed;
         rotateObject.transform.Rotate(rotateVector);
         rotateObject.transform.localPosition = new Vector3(initialPos.x, initialPos.y + Mathf.Sin(timer) * bounceSpeed, initialPos.z);
-        if (Input.GetKeyDown(KeyCode.F))
+       /* if (Input.GetKeyDown(KeyCode.F))
         {
             isHighlighted = !isHighlighted;
             ChangeMat();
-        }
+        }*/
     }
 
     private void OnMouseDown()
