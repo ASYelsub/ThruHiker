@@ -6174,6 +6174,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2117822762803549779, guid: 82c83603bb19343a291e7437391ffa77, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f162960c43e3f4e008a13f28cec1ae5b, type: 2}
+    - target: {fileID: 2117822763025056022, guid: 82c83603bb19343a291e7437391ffa77, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f162960c43e3f4e008a13f28cec1ae5b, type: 2}
+    - target: {fileID: 2117822763784103931, guid: 82c83603bb19343a291e7437391ffa77, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f162960c43e3f4e008a13f28cec1ae5b, type: 2}
+    - target: {fileID: 2117822763902142884, guid: 82c83603bb19343a291e7437391ffa77, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f162960c43e3f4e008a13f28cec1ae5b, type: 2}
     - target: {fileID: 2117822764018971418, guid: 82c83603bb19343a291e7437391ffa77, type: 3}
       propertyPath: m_Name
       value: Dede_rig
@@ -6226,6 +6242,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: b1dd3221d1d6a47c299501afea07600c, type: 2}
+    - target: {fileID: 2117822764744265105, guid: 82c83603bb19343a291e7437391ffa77, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f162960c43e3f4e008a13f28cec1ae5b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82c83603bb19343a291e7437391ffa77, type: 3}
 --- !u!1 &1915735702
