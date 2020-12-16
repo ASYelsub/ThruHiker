@@ -4,7 +4,7 @@ using UnityEngine;
 
 //the "trail" is the conglomeration of "stretches" or whatever
 //this script is called from gameManager and integrates all the trailSpots and stretches (hold parameters to create a bunch of slots)
-public class TrailGenerator
+public class TrailGenerator : MonoBehaviour
 {
     private List<Stretch> allStretches;
     private List<TrailSpot> trailSpots;
@@ -30,11 +30,13 @@ public class TrailGenerator
     {
         this.firstLocation = first;
         this.finalLocation = final;
+
+        
+        
         /*Debug.Log("Trail Generated!");
         Debug.Log("First location: " + firstLocation.SpotName);
         Debug.Log("Final location: " + finalLocation.SpotName);*/
     }
-
 
     public Stretch SetCurrentStretch(Stretch inputStretch)
     {

@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     private GameObject slotPrefab;
     [SerializeField]
     private GameObject hikerPrefab;
+    [SerializeField]
+    private GameObject trailSpotPrefab;
 
     [Header("Classes")]
     [SerializeField]
@@ -72,7 +74,7 @@ public class GameManager : MonoBehaviour
     {
         trailGenerator.GenerateTrail(trailGenerator.TrailSpots[0], trailGenerator.TrailSpots[2]);
         currentStretch = trailGenerator.SetCurrentStretch(trailGenerator.AllStretches[0]);
-        slotGenerator.GenerateSlotsInCurrentStretch(currentStretch, slotPrefab, trailHolder,holderOfAssets);
+        slotGenerator.GenerateSlotsInCurrentStretch(currentStretch, slotPrefab, trailHolder,holderOfAssets, -6, trailSpotPrefab);
         //programming this as if the "camperOrder" is in according to the default order I've programmed so far
         //guess it's important that they're made in the same order.
 
@@ -92,6 +94,12 @@ public class GameManager : MonoBehaviour
 
         camperProfile.Activate();
 
+
+        currentStretch = trailGenerator.SetCurrentStretch(trailGenerator.AllStretches[1]);
+        slotGenerator.GenerateSlotsInCurrentStretch(currentStretch, slotPrefab, trailHolder, holderOfAssets, 0, trailSpotPrefab);
+
+        currentStretch = trailGenerator.SetCurrentStretch(trailGenerator.AllStretches[2]);
+        slotGenerator.GenerateSlotsInCurrentStretch(currentStretch, slotPrefab, trailHolder, holderOfAssets, 6, trailSpotPrefab);
     }
 
 }

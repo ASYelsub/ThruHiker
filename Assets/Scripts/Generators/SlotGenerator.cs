@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlotGenerator
+public class SlotGenerator : MonoBehaviour
 {
     public List<SpaceSlot> slotStorage;
     public List<SpaceSlot> slotStorage2;
@@ -41,58 +41,143 @@ public class SlotGenerator
         }
     }
 
-    public void GenerateSlotsInCurrentStretch(Stretch currentStretch, GameObject slotPrefab, GameObject trailHolder, HolderOfAssets assetHolder)
+    public void GenerateSlotsInCurrentStretch(Stretch currentStretch, GameObject slotPrefab, GameObject trailHolder, HolderOfAssets assetHolder,float compareShift, GameObject spotPrefab)
     {
         this.assetHolder = assetHolder;
         this.numberOfSlotsInLevel = currentStretch.AmountOfSlotsInLevel;
         int randomInt;
-        float finalPos = currentStretch.StartingSpot.Altitude.x;
-        float initialPos = currentStretch.EndSpot.Altitude.x;
-        float increment = (initialPos - finalPos) / (numberOfSlotsInLevel * 4);
-        float lastSlotY = initialPos;
-        float lastSlotX = 0;
+
+        float trailEndAlt = currentStretch.StartingSpot.Altitude.x;
+        float trailStartAlt = currentStretch.EndSpot.Altitude.x;
+
+        float slotSpacerZ = 1.2f;
+        float slotSpacerX = 1f;
+        float slotSpacerY = 1f;
+
+        float priorSlotPosX = 0;
+        float priorSlotPosY = 0;
+
+        float yIncrement = -.1f * ((trailEndAlt - trailStartAlt) / NumberOfSlotsInLevel);
+        float xIncrement = -10000 * (currentStretch.StartingSpot.SpotPosition.x -
+            currentStretch.EndSpot.SpotPosition.x) / NumberOfSlotsInLevel;
+        Debug.Log("yInc = " + yIncrement);
+        Debug.Log("xInc = " + xIncrement);
+
+        float xPos = 0;
+        float yPos = 0;
+
+        int randomX;
+        int randomY;
+        bool thisXPos = true;
+        bool lastXPos = true;
+        bool thisYPos = true;
+        bool lastYPos = true;
+
+        //float endAltSpot = currentStretch.EndSpot.Altitude.x - currentStretch.StartingSpot.Altitude.x;
+
+        Instantiate(spotPrefab, new Vector3(compareShift,1.5f,-2), Quaternion.identity);
+        Instantiate(spotPrefab, new Vector3(0,trailEndAlt,0), Quaternion.identity);
+
+        //can increase numberOfSlotsInLevel 2x if it doesn't feel long enough per trail stretch or whatever.
         for (int i = 0; i < numberOfSlotsInLevel; i++)
         {
-            randomInt = UnityEngine.Random.Range(1, 10); //slot type
+            randomInt = UnityEngine.Random.Range(0, 9); //note: first slot was pink once for some reason? whats up w mat? all the others werent, so it has to do w assigning before smth
 
-            
-            float yPosNeg = UnityEngine.Random.Range(0, 2);
-            float xPosNeg = UnityEngine.Random.Range(0, 2);
-            float xPos;
-            float yPos;
-            if(yPosNeg >= 1)
+
+            randomX = UnityEngine.Random.Range(0, 2);
+            if (randomX == 0)
             {
-                yPos = (increment * i +
-                    UnityEngine.Random.Range(currentStretch.SteepnessMin, currentStretch.SteepnessMax)) * .25f ;
+                thisXPos = true;
+                if (lastXPos)
+                {
+                    xPos = priorSlotPosX + 
+                        UnityEngine.Random.Range(currentStretch.WindingMin, currentStretch.WindingMax);
+                }
+                else
+                {
+                    xPos = priorSlotPosX + 
+                        .1f * UnityEngine.Random.Range(currentStretch.WindingMin, currentStretch.WindingMax);
+                }
             }
             else
             {
-                yPos = (increment * i -
-                    UnityEngine.Random.Range(currentStretch.SteepnessMin, currentStretch.SteepnessMax)) * .25f ;
+                thisXPos = false;
+                if (!lastXPos)
+                {
+                    xPos = priorSlotPosX -
+                        UnityEngine.Random.Range(currentStretch.WindingMin, currentStretch.WindingMax);
+                }
+                else
+                {
+                    xPos = priorSlotPosX -
+                        .1f * UnityEngine.Random.Range(currentStretch.WindingMin, currentStretch.WindingMax);
+                }
             }
-            yPos = yPos - lastSlotY;
-            lastSlotY = yPos;
-            if(xPosNeg >= 1)
+            //xPos = xPos + xIncrement;
+            priorSlotPosX = xPos;
+            lastXPos = thisXPos;
+
+            randomY = UnityEngine.Random.Range(0, 2);
+            if (randomY == 0)
             {
-                xPos =  UnityEngine.Random.Range(0f, 2f);
+                thisYPos = true;
+                if (lastYPos)
+                {
+                    yPos = priorSlotPosY +
+                        UnityEngine.Random.Range(currentStretch.BumpMin, currentStretch.BumpMax);
+                }
+                else
+                {
+                    yPos = priorSlotPosY +
+                        .1f * UnityEngine.Random.Range(currentStretch.BumpMin, currentStretch.BumpMax);
+                }
             }
             else
             {
-                xPos = -UnityEngine.Random.Range(0f, 2f);
+                thisYPos = false;
+                if (!lastYPos)
+                {
+                    yPos = priorSlotPosY -
+                        UnityEngine.Random.Range(currentStretch.BumpMin, currentStretch.BumpMax);
+                }
+                else
+                {
+                    yPos = priorSlotPosY -
+                        .1f * UnityEngine.Random.Range(currentStretch.BumpMin, currentStretch.BumpMax);
+                }
             }
-            xPos = xPos - lastSlotX;
-            lastSlotX = xPos;
-         
-            //we dont necessarily want it to be linear. we want it to be from the altitude on the starting spot to the altitude
-            //on the end spot
-            
-            Vector3 v = new Vector3(xPos, yPos + 1895, i);
+            if (i != 0)  //so it doesnt start above 0... maybe do this for x values also? but also idc. brain dead.
+            {
+                
+                yPos = yPos + yIncrement;
+            }
+            priorSlotPosY = yPos;
+            lastYPos = thisYPos;
+
+
+
+
+            Vector3 v = new Vector3((xPos * slotSpacerX) + compareShift, yPos * slotSpacerY, i * slotSpacerZ);
             SpaceSlot newSpaceSlot = new SpaceSlot(SlotTypeFromInt(randomInt), v, v, slotPrefab, trailHolder, slotMat);
             slotStorage.Add(newSpaceSlot);
-            v = new Vector3(xPos + 2, yPos + 1895, i);
-            SpaceSlot newSpaceSlot2 = new SpaceSlot(SlotTypeFromInt(randomInt), v, v, slotPrefab, trailHolder, slotMat);
-            slotStorage2.Add(newSpaceSlot2);
-            Debug.Log("SpaceSlot type " + newSpaceSlot.SlotType + " spawned at point" + v);
+
+            
+
+
+
+
+
+
+            //v = new Vector3(xPos * slotSpacerX, yPos * slotSpacerY, i * slotSpacerZ);
+            //SpaceSlot newSpaceSlot2 = new SpaceSlot(SlotTypeFromInt(randomInt), v, v, slotPrefab, trailHolder, slotMat);
+            //slotStorage2.Add(newSpaceSlot2);
+            //Debug.Log("SpaceSlot type " + newSpaceSlot.SlotType + " spawned at point" + v);
+        
+        
+            //we dont necessarily want it to be linear. we want it to be from the altitude on the starting spot to the altitude
+            //on the end spot
+
+                
         }
     }
 

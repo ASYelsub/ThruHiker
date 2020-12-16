@@ -921,9 +921,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76ca33e3caf564a8a81cbf89d74ef758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slotGenerator: {fileID: 0}
+  trailGenerator: {fileID: 0}
   movementManager: {fileID: 444696118}
   slotPrefab: {fileID: 4976684663641117229, guid: 504d600532e4f498b8f21a5df73a1c32, type: 3}
   hikerPrefab: {fileID: 659550995387534772, guid: 249a920fe917c4a90b3c020bacba3b56, type: 3}
+  trailSpotPrefab: {fileID: 6523554771674704379, guid: 8c6d048adbb6d684a939f55f4969184a, type: 3}
   camperProfile: {fileID: 1437965847}
   holderOfAssets: {fileID: 444696117}
   trailHolder: {fileID: 1414458597}
@@ -5517,7 +5520,7 @@ Transform:
   m_GameObject: {fileID: 1640710443}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6

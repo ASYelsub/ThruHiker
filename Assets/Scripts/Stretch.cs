@@ -26,9 +26,9 @@ public class Stretch
     private Vector3 endLocationPos;
 
     private int amountOfSlotsInLevel; //will be determined by like... distanceInMiles
-    private float steepnessMax; //the biggest difference two slots can be from one another on the y
-    private float steepnessMin;
-    private float windingMax; //same as steepness but for x
+    private float bumpMax; //the biggest difference two slots can be from one another on the y
+    private float bumpMin;
+    private float windingMax; //completely eyeballed
     private float windingMin;
 
 
@@ -52,11 +52,15 @@ public class Stretch
             case 1:
                 this.nameOfStartingLocation = "Williamstown";
                 this.nameOfEndLocation = "PineCobble";
-                this.startingLocationPos = new Vector3(42.716950f,0,-73.184321f);
-                this.endLocationPos = new Vector3(42.726261f,1894,-73.161012f); 
+                this.startingLocationPos = new Vector3(42.716950f,0,0);
+                this.endLocationPos = new Vector3(42.726261f,1894,0); 
                 this.startingSpot = new Town(nameOfStartingLocation, startingLocationPos, new Vector2(873,266));
                 this.endSpot = new Lookout(nameOfEndLocation, endLocationPos, new Vector2(1894,577));
-                this.distanceInMiles = 2.1f;
+                this.distanceInMiles = 1.5f; //unsure??? 
+                this.windingMin = 1.5f;
+                this.windingMax = 2.5f;
+                this.bumpMin = .5f;
+                this.bumpMax = 1f;
                 break;
             //Thought: there is "class of 98 trail" between pine cobble and williamstown, i think any protruding paths should be ignored.
             //"This is the path you MUST take the kids down or you'll get in trouble" or something??? But does that make sense if that's the only thing
@@ -64,27 +68,32 @@ public class Stretch
             case 2:
                 this.nameOfStartingLocation = "PineCobble";
                 this.nameOfEndLocation = "EphsLookout";
-                this.startingLocationPos = new Vector3(42.726261f, 1894, -73.161012f);
-                this.endLocationPos = new Vector3(42.734124f,2280,-73.158174f);
+                this.startingLocationPos = new Vector3(42.726261f, 1894,0);
+                this.endLocationPos = new Vector3(42.734124f,2280,0);
                 startingSpot = new Lookout(nameOfStartingLocation, startingLocationPos, new Vector2(1894, 577));
                 endSpot = new Lookout(nameOfEndLocation, endLocationPos, new Vector2(2280, 695)); 
                 this.distanceInMiles = 1.2f;
+                this.windingMin = .2f;
+                this.windingMax = .5f;
+                this.bumpMin = .5f;
+                this.bumpMax = 1f;
                 break;
             case 3:
                 this.nameOfStartingLocation = "EphsLookout";
                 this.nameOfEndLocation = "SethWarnerShelter";
-                this.startingLocationPos = new Vector3(42.734124f, 2280, -73.158174f);
-                this.endLocationPos = new Vector3(42.771968f ,2300, -73.136644f);
+                this.startingLocationPos = new Vector3(42.734124f, 2280, 0);
+                this.endLocationPos = new Vector3(42.771968f ,2300, 0);
                 startingSpot = new Lookout(nameOfStartingLocation, startingLocationPos, new Vector2(2280,695));
                 endSpot = new Shelter(nameOfEndLocation, endLocationPos, new Vector2(2180, 664)); //converted myself
                 this.distanceInMiles = 2.8f;
+                this.windingMin = 1f;
+                this.windingMax = 1.5f;
+                this.bumpMin = .5f;
+                this.bumpMax = 1f;
                 break;
         }
         this.amountOfSlotsInLevel = (int)(distanceInMiles * 100f);
 
-        //These are absolute guesses.
-        this.steepnessMax = this.startingSpot.Altitude.x / 1000;
-        this.steepnessMin = this.startingSpot.Altitude.x / 900;
     }
     //Getters and Setters
     public int AmountOfSlotsInLevel
@@ -92,15 +101,26 @@ public class Stretch
         get { return amountOfSlotsInLevel; }
         set { amountOfSlotsInLevel = value; }
     }
-    public float SteepnessMax
+
+    public float WindingMin
     {
-        get { return steepnessMax; }
-        set { steepnessMax = value; }
+        get { return windingMin; }
+        set { windingMin = value; }
     }
-    public float SteepnessMin
+    public float WindingMax
     {
-        get { return steepnessMin; }
-        set { steepnessMin = value; }
+        get { return windingMax; }
+        set { windingMax = value; }
+    }
+    public float BumpMax
+    {
+        get { return bumpMax; }
+        set { bumpMax = value; }
+    }
+    public float BumpMin
+    {
+        get { return bumpMin; }
+        set { bumpMin = value; }
     }
 
     public int StretchID
