@@ -11,10 +11,11 @@ public class Lake : TrailSpot
         Meeting,
         Lunch
     }
-    public Lake(string spotName, Vector3 spotPosition) : base(spotName, spotPosition)
+    public Lake(string spotName, Vector3 spotPosition, Vector2 altitude) : base(spotName, spotPosition, altitude)
     {
         spotName = base.SpotName;
         spotPosition = base.SpotPosition;
+        altitude = base.Altitude;
     }
 
 

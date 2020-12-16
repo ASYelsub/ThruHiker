@@ -11,24 +11,38 @@ public class TrailGenerator
 
     private TrailSpot firstLocation;
     private TrailSpot finalLocation;
+
+    private Stretch currentStretch;
     public TrailGenerator()
     {
-
-        allStretches.Add(new Stretch("Strech1"));
+        allStretches = new List<Stretch>();
+        trailSpots = new List<TrailSpot>();
+        allStretches.Add(new Stretch(1));
         trailSpots.Add(AllStretches[0].StartingSpot);
-        allStretches.Add(new Stretch("Strech2"));
+        allStretches.Add(new Stretch(2));
         trailSpots.Add(AllStretches[1].StartingSpot);
-        allStretches.Add(new Stretch("Strech3"));
+        allStretches.Add(new Stretch(3));
         trailSpots.Add(AllStretches[2].StartingSpot);
         trailSpots.Add(AllStretches[2].EndSpot);
     }
 
-    public void GenerateTrail(TrailSpot firstLocation, TrailSpot finalLocation)
+    public void GenerateTrail(TrailSpot first, TrailSpot final)
     {
-        this.firstLocation = firstLocation;
-        this.finalLocation = finalLocation;
+        this.firstLocation = first;
+        this.finalLocation = final;
+        /*Debug.Log("Trail Generated!");
+        Debug.Log("First location: " + firstLocation.SpotName);
+        Debug.Log("Final location: " + finalLocation.SpotName);*/
     }
 
+
+    public Stretch SetCurrentStretch(Stretch inputStretch)
+    {
+        currentStretch = inputStretch;
+        Debug.Log("Current stretch set to: " + 
+            currentStretch.StartingSpot.SpotName + " / " + currentStretch.EndSpot.SpotName);
+        return inputStretch;
+    }
 
     public List<Stretch> AllStretches
     {

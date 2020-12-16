@@ -8,9 +8,10 @@ public class River : TrailSpot //same function as concept of "waterfall"
         RefillWater,
         Bathe
     }
-    public River(string spotName, Vector3 spotPosition) : base(spotName, spotPosition)
+    public River(string spotName, Vector3 spotPosition, Vector2 altitude) : base(spotName, spotPosition, altitude)
     {
         spotName = base.SpotName;
         spotPosition = base.SpotPosition;
+        altitude = base.Altitude;
     }
 }

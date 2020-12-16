@@ -11,10 +11,11 @@ using UnityEngine;
         Meeting,
         Lunch
     }
-    public Lookout(string spotName, Vector3 spotPosition) : base(spotName, spotPosition)
+    public Lookout(string spotName, Vector3 spotPosition, Vector2 altitude) : base(spotName, spotPosition, altitude)
     {
         spotName = base.SpotName;
         spotPosition = base.SpotPosition;
+        altitude = base.Altitude;
     }
 
 }

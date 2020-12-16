@@ -12,9 +12,10 @@ public class Town : TrailSpot
         Camp,
         Relax
     }
-    public Town(string spotName, Vector3 spotPosition) : base(spotName, spotPosition)
+    public Town(string spotName, Vector3 spotPosition, Vector2 altitude) : base(spotName, spotPosition, altitude)
     {
         spotName = base.SpotName;
         spotPosition = base.SpotPosition;
+        altitude = base.Altitude;
     }
 }

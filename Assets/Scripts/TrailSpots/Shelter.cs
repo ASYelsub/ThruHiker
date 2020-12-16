@@ -11,9 +11,10 @@ public class Shelter : TrailSpot
         Lunch
     }
 
-    public Shelter(string spotName, Vector3 spotPosition) : base(spotName, spotPosition)
+    public Shelter(string spotName, Vector3 spotPosition, Vector2 altitude) : base(spotName, spotPosition, altitude)
     {
         spotName = base.SpotName;
         spotPosition = base.SpotPosition;
+        altitude = base.Altitude;
     }
 }

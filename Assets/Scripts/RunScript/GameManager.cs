@@ -16,7 +16,8 @@ public class GameManager : MonoBehaviour
     //public SpaceSlot tempSlot;
     public MovementManager movementManager;
     private CamperOrder camperOrder; //later there will be a screen that's like "pick camper order" & a function thats like "open camper order picker menu"
-                                        //maybe it could correspond to UI stuff? //maybe on GameplayUI?
+                                     //maybe it could correspond to UI stuff? //maybe on GameplayUI?
+    private Stretch currentStretch;
 
     [Header("Prefabs")]
     [SerializeField]
@@ -36,7 +37,12 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         //Test();
-        //trailGenerator = new TrailGenerator();
+        trailGenerator = new TrailGenerator();
+        /*for(int i = 0; i < trailGenerator.TrailSpots.Count; i++)
+        {
+            Debug.Log(trailGenerator.TrailSpots[i].SpotName);
+        }*/
+
         slotGenerator = new SlotGenerator();
         hikerGenerator = new HikerGenerator();
         SetGame();
@@ -64,8 +70,9 @@ public class GameManager : MonoBehaviour
 
     void SetGame()
     {
-//        trailGenerator.GenerateTrail(trailGenerator.AllStretches[0], trailGenerator.AllStretches[2]);
-        slotGenerator.GenerateRandomSlots(10, slotPrefab, trailHolder,holderOfAssets);
+        trailGenerator.GenerateTrail(trailGenerator.TrailSpots[0], trailGenerator.TrailSpots[2]);
+        currentStretch = trailGenerator.SetCurrentStretch(trailGenerator.AllStretches[0]);
+        slotGenerator.GenerateSlotsInCurrentStretch(currentStretch, slotPrefab, trailHolder,holderOfAssets);
         //programming this as if the "camperOrder" is in according to the default order I've programmed so far
         //guess it's important that they're made in the same order.
 

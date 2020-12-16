@@ -5,7 +5,7 @@ using UnityEngine;
 public class Stretch
 {
     
-    private string stretchID; //QUESTION: Should every day be another level? Can the player take days off? How much of the work can the player plan vs how much
+    private int stretchID; //QUESTION: Should every day be another level? Can the player take days off? How much of the work can the player plan vs how much
                                 //is predisposed by me? Like should the player plan how much food is brought also?
                                    //Maybe this stuff doesn't matter, just because I want to focus on the social interactions and leave more room to gamify that.
                                    //But I really do like giving the player this intense caretaking responsiblity with time spent/food stored/etc.
@@ -25,7 +25,7 @@ public class Stretch
     private Vector3 startingLocationPos;
     private Vector3 endLocationPos;
 
-    private int amountOfSLotsInLevel;
+    private int amountOfSlotsInLevel; //will be determined by like... distanceInMiles
     private float steepnessMax; //the biggest difference two slots can be from one another on the y
     private float steepnessMin;
     private float windingMax; //same as steepness but for x
@@ -44,46 +44,66 @@ public class Stretch
 
 
     //Constructor
-    public Stretch(string stretchID)
+    public Stretch(int stretchID)
     {
         this.stretchID = stretchID;
         switch (stretchID)
         {
-            case "Stretch1":
+            case 1:
                 this.nameOfStartingLocation = "Williamstown";
                 this.nameOfEndLocation = "PineCobble";
                 this.startingLocationPos = new Vector3(42.716950f,0,-73.184321f);
-                this.endLocationPos = new Vector3(42.726261f,1894,-73.161012f); //unsure how to measure altitude just yet... ugh
-                this.startingSpot = new Town(nameOfStartingLocation, startingLocationPos);
-                this.endSpot = new Lookout(nameOfEndLocation, endLocationPos);
+                this.endLocationPos = new Vector3(42.726261f,1894,-73.161012f); 
+                this.startingSpot = new Town(nameOfStartingLocation, startingLocationPos, new Vector2(873,266));
+                this.endSpot = new Lookout(nameOfEndLocation, endLocationPos, new Vector2(1894,577));
                 this.distanceInMiles = 2.1f;
                 break;
             //Thought: there is "class of 98 trail" between pine cobble and williamstown, i think any protruding paths should be ignored.
             //"This is the path you MUST take the kids down or you'll get in trouble" or something??? But does that make sense if that's the only thing
             //that the camp really cares about? maybe they could also care about money spent in towns.
-            case "Stretch2":
+            case 2:
                 this.nameOfStartingLocation = "PineCobble";
                 this.nameOfEndLocation = "EphsLookout";
                 this.startingLocationPos = new Vector3(42.726261f, 1894, -73.161012f);
                 this.endLocationPos = new Vector3(42.734124f,2280,-73.158174f);
-                startingSpot = new Lookout(nameOfStartingLocation, startingLocationPos);
-                endSpot = new Lookout(nameOfEndLocation, endLocationPos);
+                startingSpot = new Lookout(nameOfStartingLocation, startingLocationPos, new Vector2(1894, 577));
+                endSpot = new Lookout(nameOfEndLocation, endLocationPos, new Vector2(2280, 695)); 
                 this.distanceInMiles = 1.2f;
                 break;
-            case "Stretch3":
+            case 3:
                 this.nameOfStartingLocation = "EphsLookout";
                 this.nameOfEndLocation = "SethWarnerShelter";
                 this.startingLocationPos = new Vector3(42.734124f, 2280, -73.158174f);
                 this.endLocationPos = new Vector3(42.771968f ,2300, -73.136644f);
-                startingSpot = new Lookout(nameOfStartingLocation, startingLocationPos);
-                endSpot = new Shelter(nameOfEndLocation, endLocationPos);
+                startingSpot = new Lookout(nameOfStartingLocation, startingLocationPos, new Vector2(2280,695));
+                endSpot = new Shelter(nameOfEndLocation, endLocationPos, new Vector2(2180, 664)); //converted myself
                 this.distanceInMiles = 2.8f;
                 break;
         }
-        
+        this.amountOfSlotsInLevel = (int)(distanceInMiles * 100f);
+
+        //These are absolute guesses.
+        this.steepnessMax = this.startingSpot.Altitude.x / 1000;
+        this.steepnessMin = this.startingSpot.Altitude.x / 900;
     }
     //Getters and Setters
-    public string StretchID
+    public int AmountOfSlotsInLevel
+    {
+        get { return amountOfSlotsInLevel; }
+        set { amountOfSlotsInLevel = value; }
+    }
+    public float SteepnessMax
+    {
+        get { return steepnessMax; }
+        set { steepnessMax = value; }
+    }
+    public float SteepnessMin
+    {
+        get { return steepnessMin; }
+        set { steepnessMin = value; }
+    }
+
+    public int StretchID
     {
         get { return stretchID; }
         set { stretchID = value; }

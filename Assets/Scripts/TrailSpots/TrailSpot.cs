@@ -10,6 +10,7 @@ public abstract class TrailSpot : TrailSpotBehaviors
 {
     private string spotName;
     private Vector3 spotPosition;
+    private Vector2 altitude; //feet then meters
 
     public enum SpotTypes
     {
@@ -22,10 +23,11 @@ public abstract class TrailSpot : TrailSpotBehaviors
 
     private SpotTypes spotType;
 
-    public TrailSpot(string spotName, Vector3 spotPosition)
+    public TrailSpot(string spotName, Vector3 spotPosition, Vector2 altitude)
     {
         this.spotPosition = spotPosition;
         this.spotName = spotName;
+        this.altitude = altitude;
     }
 
     public string SpotName
@@ -45,6 +47,14 @@ public abstract class TrailSpot : TrailSpotBehaviors
         get { return spotPosition; }
         set { spotPosition = value; }
     }
+
+    public Vector2 Altitude
+    {
+        get { return altitude; }
+        set { altitude = value; }
+    }
+    
+
 
 
 }
