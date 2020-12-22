@@ -13,7 +13,7 @@ public class ShowcaseModel : MonoBehaviour
     float timer = 0f;
     Vector3 initialPos;
 
-    [Header("Materials")]
+    /*[Header("Materials")]
     public Material eyesSelectMat;
     public Material bodySelectMat;
     public Material hairSelectMat;
@@ -29,7 +29,7 @@ public class ShowcaseModel : MonoBehaviour
     public GameObject eyes;
     public GameObject socks;
     public GameObject ears;
-    public GameObject skullcap;
+    public GameObject skullcap;*/
 
     bool isHighlighted;
 
@@ -60,7 +60,7 @@ public class ShowcaseModel : MonoBehaviour
         rotateObject.transform.localPosition = new Vector3(initialPos.x, initialPos.y + Mathf.Sin(timer) * bounceSpeed, initialPos.z);
     }
 
-    private void OnMouseDown()
+    /*private void OnMouseDown()
     {
         isHighlighted = true;
         ChangeMat();
@@ -98,5 +98,5 @@ public class ShowcaseModel : MonoBehaviour
     {
         isHighlighted = false;
         ChangeMat();
-    }
+    }*/
 }
