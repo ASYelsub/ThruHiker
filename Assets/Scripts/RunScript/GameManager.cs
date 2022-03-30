@@ -52,7 +52,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Tab)){
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Tab))
+        {
             camperProfile.ToggleProfileDisplay();
         }
         if (Input.GetKeyDown(KeyCode.V))
@@ -74,22 +75,18 @@ public class GameManager : MonoBehaviour
     {
         trailGenerator.GenerateTrail(trailGenerator.TrailSpots[0], trailGenerator.TrailSpots[2]);
         currentStretch = trailGenerator.SetCurrentStretch(trailGenerator.AllStretches[0]);
-        slotGenerator.GenerateSlotsInCurrentStretch(currentStretch, slotPrefab, trailHolder,holderOfAssets, -6, trailSpotPrefab);
+        slotGenerator.GenerateSlotsInCurrentStretch(currentStretch, slotPrefab, trailHolder, holderOfAssets, -6, trailSpotPrefab);
         //programming this as if the "camperOrder" is in according to the default order I've programmed so far
         //guess it's important that they're made in the same order.
 
-        hikerGenerator.GenerateCampersInitial("Beth");
-        hikerGenerator.CreatePhysicalCamper(slotGenerator, hikerPrefab, 0);
-        hikerGenerator.GenerateCampersInitial("Dede");
-        hikerGenerator.CreatePhysicalCamper(slotGenerator, hikerPrefab, 1);
-        hikerGenerator.GenerateCampersInitial("Nina");
-        hikerGenerator.CreatePhysicalCamper(slotGenerator, hikerPrefab, 2);
-        hikerGenerator.GenerateCampersInitial("Joan");
-        hikerGenerator.CreatePhysicalCamper(slotGenerator, hikerPrefab, 3);
-        hikerGenerator.GenerateCampersInitial("Marsha");
-        hikerGenerator.CreatePhysicalCamper(slotGenerator, hikerPrefab, 4);
-        
-        
+        hikerGenerator.GenerateCampersInitial("Beth", slotGenerator, hikerPrefab, 0);
+        hikerGenerator.GenerateCampersInitial("Dede", slotGenerator, hikerPrefab, 1);
+        hikerGenerator.GenerateCampersInitial("Nina", slotGenerator, hikerPrefab, 2);
+        hikerGenerator.GenerateCampersInitial("Joan", slotGenerator, hikerPrefab, 3);
+        hikerGenerator.GenerateCampersInitial("Marsha", slotGenerator, hikerPrefab, 4);
+
+
+
         camperOrder = new CamperOrder(hikerGenerator.Campers[0], hikerGenerator.Campers[1], hikerGenerator.Campers[2], hikerGenerator.Campers[3], hikerGenerator.Campers[4]);
 
         camperProfile.Activate();

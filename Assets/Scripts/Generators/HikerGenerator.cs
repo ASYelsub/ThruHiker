@@ -9,9 +9,6 @@ public class HikerGenerator
     private List<Hiker> allHikers;
     private List<Camper> campers;
     private List<ThruHiker> otherHikers;
-    private List<GameObject> campersPhysical;
-    private List<GameObject> otherHikersPhysical;
-    private List<GameObject> allHikersPhysical;
 
     public static int camperCount; //specifically increases when the stats are generated, not the phsyical part
     public static int otherHikerCount;
@@ -26,13 +23,10 @@ public class HikerGenerator
         allHikers = new List<Hiker>();
         campers = new List<Camper>();
         otherHikers = new List<ThruHiker>();
-        campersPhysical = new List<GameObject>();
-        otherHikersPhysical = new List<GameObject>();
-        allHikersPhysical = new List<GameObject>();
     }
 
 
-    public void GenerateCampersInitial(string codeName)
+    public void GenerateCampersInitial(string codeName, SlotGenerator slotGen, GameObject hikerPrefab, int whichSlot)
     {
         Camper newCamper = null;
         switch (codeName)
@@ -56,17 +50,20 @@ public class HikerGenerator
                 Debug.Log("No camper generated.");
                 break;
         }
+        GameObject camperObj = GameObject.Instantiate(hikerPrefab, slotGen.slotStorage[whichSlot].FirstPointInSpace + new Vector3(0, 1, 0), Quaternion.identity);
+        newCamper = camperObj.AddComponent<Camper>();
         campers.Add(newCamper);
         allHikers.Add(newCamper);
         Debug.Log("Camper " + newCamper.CodeName + " added to campers at spot " + campers.Count);
         Debug.Log("Camper " + newCamper.CodeName + " added to allHikers at spot " + allHikers.Count);
     }
 
+
     public void GenerateCamperTest(int amount)
     {
         for (int i = 0; i < amount; i++)
         {
-            Camper newCamper = new Camper("Name",10,10,10,10,10,10,10);
+            Camper newCamper = new Camper("Name", 10, 10, 10, 10, 10, 10, 10);
             campers.Add(newCamper);
             allHikers.Add(newCamper);
             Debug.Log("Camper " + newCamper.CodeName + " added to campers at spot " + campers.Count);
@@ -75,11 +72,11 @@ public class HikerGenerator
     }
 
     public void GenerateThruHiker(int amount)
-    {  
+    {
 
         for (int i = 0; i < amount; i++)
         {
-            ThruHiker newThruHiker = new ThruHiker("Name",10);
+            ThruHiker newThruHiker = new ThruHiker("Name", 10);
             otherHikers.Add(newThruHiker);
             allHikers.Add(newThruHiker);
             Debug.Log("Camper " + newThruHiker.CodeName + " added to otherHikers at spot " + otherHikers.Count);
@@ -87,13 +84,6 @@ public class HikerGenerator
         }
     }
 
-    public void CreatePhysicalCamper(SlotGenerator slotGen, GameObject hikerPrefab, int whichSlot)
-    {
-        GameObject newCamper = GameObject.Instantiate(hikerPrefab, slotGen.slotStorage[whichSlot].FirstPointInSpace + new Vector3(0,1,0),Quaternion.identity);
-
-        campersPhysical.Add(newCamper);
-        allHikersPhysical.Add(newCamper);
-    }
 
 
     public List<Camper> Campers
